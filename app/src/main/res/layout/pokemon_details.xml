@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivPokemon"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/pokeball" />
+
+        <TextView
+            android:id="@+id/tvPokemonNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/TextColor"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivPokemon"
+            tools:text="#0000" />
+
+        <TextView
+            android:id="@+id/tvPokemonName"
+            android:textColor="@color/TextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPokemonNumber"
+            tools:text="POKEMON NAME" />
+
+        <TextView
+            android:id="@+id/tvPokemonTitle"
+            android:textColor="@color/TextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPokemonName"
+            tools:text="The Pokémon Title" />
+
+        <LinearLayout
+            android:id="@+id/lPokemonTypes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPokemonTitle">
+
+            <TextView
+                android:id="@+id/tvPokemonType1"
+                android:textColor="@color/TextColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textSize="16sp"
+                android:paddingHorizontal="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPokemonTitle"
+                tools:text="Type1" />
+            <TextView
+                android:id="@+id/tvPokemonTypeMiddle"
+                android:layout_width="wrap_content"
+                android:textColor="@color/TextColor"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:paddingHorizontal="8dp"
+                android:text="/"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPokemonTitle" />
+
+            <TextView
+                android:id="@+id/tvPokemonType2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/TextColor"
+                android:layout_weight="1"
+                android:paddingHorizontal="8dp"
+                android:gravity="start"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPokemonTitle"
+                tools:text="Type2" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvPokemonDexEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/TextColor"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="24dp"
+            android:justificationMode="inter_word"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet massa nulla. Nullam vestibulum laoreet porttitor. Fusce porta ante."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lPokemonTypes" />
+        <TableLayout
+            android:id="@+id/tlStats"
+            android:layout_width="match_parent"
+            android:textColor="@color/TextColor"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPokemonDexEntry">
+
+            <TableRow android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="HP" />
+
+                <TextView
+                    android:id="@+id/hpValue"
+                    android:layout_width="0dp"
+                    android:textColor="@color/TextColor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="ATK" />
+
+                <TextView
+                    android:id="@+id/atkValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="end"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="DEF" />
+
+                <TextView
+                    android:id="@+id/defValue"
+                    android:layout_width="0dp"
+                    android:textColor="@color/TextColor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:textColor="@color/TextColor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="SPATK" />
+
+                <TextView
+                    android:id="@+id/spatkValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="end"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="SPDEF" />
+
+                <TextView
+                    android:id="@+id/spdefValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="start"
+                    android:textSize="20sp"
+                    android:text="SPEED" />
+
+                <TextView
+                    android:id="@+id/speedValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/TextColor"
+                    android:layout_weight="10"
+                    android:gravity="end"
+                    android:textSize="20sp"
+                    tools:text="XXX" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvAbilities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/TextColor"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlStats"
+            android:text="Abilities" />
+
+        <LinearLayout
+            android:id="@+id/llAbilities"
+            android:layout_width="match_parent"
+            android:textColor="@color/TextColor"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAbilities">
+
+            <TextView
+                android:id="@+id/Abilities1"
+                android:layout_width="0dp"
+                android:textColor="@color/TextColor"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAbilities"
+                tools:text="Ability1" />
+
+            <TextView
+                android:id="@+id/Abilities2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/TextColor"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAbilities"
+                tools:text="Ability2" />
+
+            <TextView
+                android:id="@+id/AbilitiesH"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/TextColor"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAbilities"
+                tools:text="Hidden Ability" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMoveset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textColor="@color/TextColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llAbilities"
+            android:text="Moveset" />
+
+        <androidx.compose.ui.platform.ComposeView
+            android:id = "@+id/cwMoveList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMoveset"
+            tools:itemCount="20"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
