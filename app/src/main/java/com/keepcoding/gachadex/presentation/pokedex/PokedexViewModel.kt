@@ -9,6 +9,7 @@ import com.keepcoding.gachadex.domain.model.SettingsModel
 import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
 import com.keepcoding.gachadex.domain.usecase.GetLastEncounterUseCase
 import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
+import com.keepcoding.gachadex.domain.usecase.RegisterPokemonUseCase
 import com.keepcoding.gachadex.domain.usecase.ResetPokedexUseCase
 import com.keepcoding.gachadex.domain.usecase.SetCurrentSettingsUseCase
 import com.keepcoding.gachadex.domain.usecase.SetLastEncounterUseCase
@@ -88,7 +89,8 @@ class PokedexViewModel(
     }
 
     private fun isDexComplete(): Boolean{
-        return (pokedex.value.list.size == DexConfig.getDexByRegion(settings.value.last_unlocked.region).last)
+        val dex = DexConfig.getDexByRegion(settings.value.last_unlocked.region)
+        return (pokedex.value.list.size == dex.last - dex.first - 1)
     }
 
      fun unlockNextDex(){

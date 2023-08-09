@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -17,7 +16,7 @@ const val DATASTORE = "settings"
 
 val Context.dataStore : DataStore<Preferences> by preferencesDataStore(name = DATASTORE)
 
-class SettingsRepositoryImpl(private val context: Context): SettingsRepository {
+class SettingsRepositoryImpl(private val context: Context): PokedexStatusRepository {
 
     companion object{
         val current_dex = stringPreferencesKey("current_dex")

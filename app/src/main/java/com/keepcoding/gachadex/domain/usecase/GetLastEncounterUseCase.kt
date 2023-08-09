@@ -1,9 +1,9 @@
 package com.keepcoding.gachadex.domain.usecase
 
-import com.keepcoding.gachadex.data.SettingsRepository
+import com.keepcoding.gachadex.data.PokedexStatusRepository
 
 class GetLastEncounterUseCase (
-    private val repository: SettingsRepository
+    private val repository: PokedexStatusRepository
 ) {
     suspend fun invoke() = repository.getLastEncounter()
 }
