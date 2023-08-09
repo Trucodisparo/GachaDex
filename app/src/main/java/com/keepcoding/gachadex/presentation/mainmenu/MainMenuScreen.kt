@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -71,9 +72,9 @@ fun MainMenuScreen(
     val context = LocalContext.current
     val secretClickCount = remember{mutableStateOf(0)}
 
-    LaunchedEffect(vm){
+    LaunchedEffect(vm.countDown){
         //start only if there's no running timer
-        if(countDown.value == "Encounter")
+        if(!countDown.value.isEnabled)
             vm.startTimer()
     }
     Row(modifier = Modifier.fillMaxSize(),
@@ -84,28 +85,28 @@ fun MainMenuScreen(
             modifier = Modifier.weight(2f),
         ) {
             Image(painter = painterResource(id = R.mipmap.gachadex),
-                contentDescription = "GachaDex Logo",
+                contentDescription = stringResource(R.string.logo_text),
                 modifier = Modifier.fillMaxWidth().clickable{
                     secretClickCount.value += 1
                     if(secretClickCount.value == 3){
                         secretClickCount.value = 0
                         pokedexVM.unlockNextDex()
-                        Toast.makeText(context, "Next Dex Unlocked", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, R.string.unlock_text, Toast.LENGTH_SHORT).show()
                     }
                 })
             Spacer(modifier = Modifier.size(20.dp))
-            MenuButton("Pokédex", onPokedexClick)
-            MenuButton(countDown.value, enabled = countDown.value == "Encounter", onClick = {
+            MenuButton(stringResource(R.string.pokedex), onPokedexClick)
+            MenuButton(countDown.value.text, enabled = countDown.value.isEnabled, onClick = {
                 vm.setLastEncounter()
                 onEncounterClick()
             })
             if(!deleteConfirm.value)
-                MenuButton("Reset Pokédex", {deleteConfirm.value = true})
+                MenuButton(stringResource(R.string.reset_pokedex), {deleteConfirm.value = true})
             else
-                MenuButton("Press to confirm", {
+                MenuButton(stringResource(R.string.reset_pokedex_confirmation), {
                     pokedexVM.resetDex()
                     deleteConfirm.value = false
-                    Toast.makeText(context, "Pokédex was reset", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.pokedex_was_reset, Toast.LENGTH_SHORT).show()
                 })
         }
         Column(modifier = Modifier.weight(1f)) {}

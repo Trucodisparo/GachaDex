@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -76,7 +77,7 @@ fun PokedexItem(
                         .data(pokemon.picture)
                         .crossfade(true)
                         .build(),
-                    "HeroPic",
+                    stringResource(id = R.string.pokemon_image, pokemon.species),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxSize(),
@@ -108,7 +109,7 @@ fun PokedexItem(
                     horizontalAlignment = Alignment.End
                 ) {
                     Text(
-                        String.format("#%03d", pokemon.dexNumbers[region]),
+                        String.format("#%04d", pokemon.dexNumbers[region]),
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp,
                         color = TextColor

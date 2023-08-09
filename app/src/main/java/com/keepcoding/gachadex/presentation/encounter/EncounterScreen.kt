@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -32,12 +33,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,22 +65,30 @@ fun EncounterScreen(
     val state = vm.encounter.collectAsStateWithLifecycle()
     var buttonActive = remember {mutableStateOf(false)}
     var headerText = remember {mutableStateOf("A wild Pokémon has appeared!")}
+    LaunchedEffect(vm) { vm.getRandomEncounter() }
 
-    if(!state.value.isLoaded && !state.value.isError){
-        Text("Loading")
-        LaunchedEffect(vm){vm.getRandomEncounter()}
-    }
     if(state.value.isLoaded && !state.value.isError) {
         state.value.pokemon?.let{pokemon ->
             LaunchedEffect(Unit){
-                val mp = MediaPlayer()
-                mp.setDataSource("https://play.pokemonshowdown.com/audio/cries/${pokemon.species.lowercase().replace("\'", "")}.mp3")
-                mp.prepare()
-                mp.setOnCompletionListener {
-                    buttonActive.value = true
-                    it.release()
-                }
-                mp.start()
+                try {
+                    val mp = MediaPlayer()
+                    mp.setDataSource(
+                        "https://play.pokemonshowdown.com/audio/cries/${
+                            pokemon
+                                .species
+                                .lowercase()
+                                .replace("\'", "")
+                                .replace("♀", "f")
+                                .replace("♂", "m")
+                        }.mp3"
+                    )
+                    mp.prepare()
+                    mp.setOnCompletionListener {
+                        buttonActive.value = true
+                        it.release()
+                    }
+                    mp.start()
+                }catch(_: Throwable){}
             }
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -122,6 +134,18 @@ fun EncounterScreen(
                 }
             }
         }
+    }else{
+        Column(Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
+            if (!state.value.isLoaded && !state.value.isError) {
+                CircularProgressIndicator(color = MaterialTheme.colorScheme.onSurface)
+            }
+            if(state.value.isError){
+                Text(state.value.errorMsg ?: stringResource(id = R.string.unknown_error),
+                color = TextColor, textAlign = TextAlign.Center)
+            }
+        }
     }
 }
 
@@ -160,14 +184,14 @@ fun EncounterData(pokemon: PokedexEntryModel, registered: Boolean){
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(pokemon.picture)
                     .build(),
-                "Imagen de ${pokemon.species}",
+                stringResource(id = R.string.pokemon_image, pokemon.species),
                 modifier = Modifier
                     .fillMaxSize(0.5f),
                 placeholder = painterResource(id = R.drawable.pokeball),
                 error = painterResource(id = R.drawable.pokeball)
             )
             Text(
-                String.format("#%03d", pokemon.dexNumbers["national"]),
+                String.format("#%04d", pokemon.dexNumbers["national"]),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextColor
@@ -178,9 +202,10 @@ fun EncounterData(pokemon: PokedexEntryModel, registered: Boolean){
                     Spacer(modifier = Modifier.size(4.dp))
                     Image(
                         painterResource(id = R.drawable.pokeball),
-                        "Caught", modifier = Modifier
+                        stringResource(id = R.string.pokemon_caught_icon), modifier = Modifier
                             .size(14.dp)
-                            .align(Alignment.CenterVertically)
+                            .align(Alignment.CenterVertically),
+                        colorFilter = ColorFilter.tint(TextColor),
                         )
                     }
                 }
@@ -193,12 +218,3 @@ fun EncounterData(pokemon: PokedexEntryModel, registered: Boolean){
         }
     }
 }
-/*
-@Preview
-@Composable
-fun EncounterDataPreview(){
-    Column(modifier = Modifier.fillMaxWidth().background(Color.Red)) {
-        EncounterData(PokedexEntryModel())
-    }
-}
-*/

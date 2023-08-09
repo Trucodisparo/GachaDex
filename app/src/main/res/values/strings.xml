@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GachaDex</string>
+    <string name="logo_text">GachaDex Logo</string>
+    <string name="unlock_text">Next Dex Unlocked!</string>
+    <string name="pokedex">Pokédex</string>
+    <string name="reset_pokedex">Reset Pokédex</string>
+    <string name="reset_pokedex_confirmation">Press again to confirm</string>
+    <string name="pokedex_was_reset">Pokédex was reset</string>
+    <string name="hidden_ability">%1$s (Hidden)</string>
+    <string name="unknown_error">Unknown error!</string>
+    <string name="pokemon_caught_icon">Pokémon caught icon</string>
+    <string name="pokemon_image">Image of %s</string>
+    <string name="no_entries">There are no entries in this Pokédex.</string>
 </resources>

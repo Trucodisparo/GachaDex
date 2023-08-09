@@ -1,6 +1,6 @@
 package com.keepcoding.gachadex.common
 
-sealed class DexConfig(val region: String, val first: Int, val last: Int, val name: String, val code: Int){
+sealed class DexConfig(val region: String, val first: Int, val last: Int, val size: Int, val name: String, val code: Int){
 
     companion object{
         fun getDexByRegion(region: String) : DexConfig {
@@ -37,6 +37,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "national",
         first = 1,
         last = 1010,
+        size = 1010,
         name = "national",
         code = 1
     )
@@ -45,6 +46,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "kanto",
         first = 1,
         last = 151,
+        size = 151,
         name = "kanto",
         code = 2
     )
@@ -53,6 +55,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "johto",
         first = 152,
         last = 251,
+        size = 256,
         name = "updated-johto",
         code = 7
     )
@@ -61,6 +64,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "hoenn",
         first = 252,
         last = 386,
+        size = 211,
         name = "updated-hoenn",
         code = 15
     )
@@ -69,6 +73,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "sinnoh",
         first = 387,
         last = 493,
+        size = 210,
         name = "extended-sinnoh",
         code = 6
     )
@@ -77,14 +82,16 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "unova",
         first = 494,
         last = 649,
+        size = 300,
         name = "updated-unova",
         code = 9
     )
 
     object AlolaDex : DexConfig(
         region = "alola",
-        first = 645,
+        first = 722,
         last = 809,
+        size = 403,
         name = "updated-alola",
         code = 21
     )
@@ -93,6 +100,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "galar",
         first = 810,
         last = 898,
+        size = 400,
         name = "galar",
         code = 27
     )
@@ -101,6 +109,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "hisui",
         first = 899,
         last = 905,
+        size = 242,
         name = "hisui",
         code = 30
     )
@@ -109,6 +118,7 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
         region = "paldea",
         first = 96,
         last = 1010,
+        size = 400,
         name = "paldea",
         code = 31
     )

@@ -1,7 +1,6 @@
 package com.keepcoding.gachadex.di
 
 import android.content.Context
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.keepcoding.gachadex.data.local.LocalDataSource
 import com.keepcoding.gachadex.data.local.LocalDataSourceImpl
@@ -9,7 +8,7 @@ import com.keepcoding.gachadex.data.remote.RemoteDataSource
 import com.keepcoding.gachadex.data.remote.RemoteDataSourceImpl
 import com.keepcoding.gachadex.data.PokemonRepository
 import com.keepcoding.gachadex.data.PokemonRepositoryImpl
-import com.keepcoding.gachadex.data.SettingsRepository
+import com.keepcoding.gachadex.data.PokedexStatusRepository
 import com.keepcoding.gachadex.data.SettingsRepositoryImpl
 import com.keepcoding.gachadex.data.local.PokedexDatabase
 import com.keepcoding.gachadex.data.remote.PokemonAPI
@@ -17,7 +16,6 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -49,7 +47,7 @@ val dataModule = module {
     single<PokemonRepository>{ PokemonRepositoryImpl(get(), get()) }
     single<LocalDataSource>{ LocalDataSourceImpl(get()) }
     single<RemoteDataSource>{ RemoteDataSourceImpl(get()) }
-    single<SettingsRepository>{SettingsRepositoryImpl(get())}
+    single<PokedexStatusRepository>{SettingsRepositoryImpl(get())}
 
     single{ getPokemonAPI(get()) }
     single{ getDatabase(get()) }

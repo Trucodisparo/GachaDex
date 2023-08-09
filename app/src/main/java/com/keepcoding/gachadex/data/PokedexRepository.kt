@@ -4,7 +4,7 @@ import com.keepcoding.gachadex.common.DexConfig
 import com.keepcoding.gachadex.domain.model.SettingsModel
 import kotlinx.coroutines.flow.Flow
 
-interface SettingsRepository {
+interface PokedexStatusRepository {
     suspend fun addDex(dexConfig: DexConfig)
     suspend fun clearSettings()
     suspend fun getCurrentSettings(): Flow<SettingsModel>
