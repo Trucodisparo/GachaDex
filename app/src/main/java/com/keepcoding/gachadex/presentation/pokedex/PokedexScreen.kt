@@ -80,7 +80,7 @@ fun PokedexScreen(
             LazyColumn(){
                 items(state.value.list.size){
                     val pokemon = state.value.list[it]
-                    PokedexItem(pokemon, onItemClick)
+                    PokedexItem(pokemon, regions[selectedRegion].lowercase(), onItemClick)
                 }
             }
         }

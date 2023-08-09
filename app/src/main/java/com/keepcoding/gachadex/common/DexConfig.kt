@@ -51,64 +51,64 @@ sealed class DexConfig(val region: String, val first: Int, val last: Int, val na
 
     object JohtoDex : DexConfig(
         region = "johto",
-        first = 1,
-        last = 256,
+        first = 152,
+        last = 251,
         name = "updated-johto",
         code = 7
     )
 
     object HoennDex : DexConfig(
         region = "hoenn",
-        first = 1,
-        last = 211,
+        first = 252,
+        last = 386,
         name = "updated-hoenn",
         code = 15
     )
 
     object SinnohDex : DexConfig(
         region = "sinnoh",
-        first = 1,
-        last = 210,
+        first = 387,
+        last = 493,
         name = "extended-sinnoh",
         code = 6
     )
 
     object UnovaDex : DexConfig(
         region = "unova",
-        first = 1,
-        last = 300,
+        first = 494,
+        last = 649,
         name = "updated-unova",
         code = 9
     )
 
     object AlolaDex : DexConfig(
         region = "alola",
-        first = 1,
-        last = 403,
+        first = 645,
+        last = 809,
         name = "updated-alola",
         code = 21
     )
 
     object GalarDex : DexConfig(
         region = "galar",
-        first = 1,
-        last = 400,
+        first = 810,
+        last = 898,
         name = "galar",
         code = 27
     )
 
     object HisuiDex : DexConfig(
         region = "hisui",
-        first = 1,
-        last = 242,
+        first = 899,
+        last = 905,
         name = "hisui",
         code = 30
     )
 
     object PaldeaDex : DexConfig(
         region = "paldea",
-        first = 1,
-        last = 400,
+        first = 96,
+        last = 1010,
         name = "paldea",
         code = 31
     )

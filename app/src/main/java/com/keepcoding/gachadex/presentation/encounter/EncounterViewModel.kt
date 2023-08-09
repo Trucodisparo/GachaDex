@@ -13,6 +13,7 @@ import com.keepcoding.gachadex.presentation.pokedex.PokedexState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -42,7 +43,6 @@ class EncounterViewModel(
             viewModelScope.launch {
                 try {
                     withContext(Dispatchers.IO) {
-                        fetchSettings()
                         getRandomEncounterUseCase.invoke(settings.value.last_unlocked.region).collect {
                             _encounter.value = EncounterState(pokemon = it.first, isRegistered = it.second, isLoaded = true)
                         }
@@ -57,14 +57,11 @@ class EncounterViewModel(
 
     private fun fetchSettings(){
         viewModelScope.launch{
-            try {
-                withContext(Dispatchers.IO) {
-                    getCurrentSettingsUseCase.invoke().collect{
-                        _settings.value = it
-                    }
+            withContext(Dispatchers.IO) {
+                getCurrentSettingsUseCase.invoke().collectLatest{
+                    _settings.value = it
+                    return@collectLatest
                 }
-            }catch(t: Throwable){
-                Log.d("SETTINGS_ERROR", t.toString())
             }
         }
     }

@@ -41,6 +41,7 @@ import com.keepcoding.gachadex.ui.theme.TextColor
 @Composable
 fun PokedexItem(
     pokemon: PokedexEntryModel,
+    region: String,
     onClick: ((id: Int) -> Unit) = {}
 ){
     val context = LocalContext.current
@@ -107,7 +108,7 @@ fun PokedexItem(
                     horizontalAlignment = Alignment.End
                 ) {
                     Text(
-                        String.format("#%03d", pokemon.dexNumbers["national"]),
+                        String.format("#%03d", pokemon.dexNumbers[region]),
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp,
                         color = TextColor
@@ -116,12 +117,4 @@ fun PokedexItem(
             }
         }
     }
-}
-
-@Composable
-@Preview
-fun PokedexItemPreview(){
-    PokedexItem(
-        PokedexEntryModel()
-    )
 }
