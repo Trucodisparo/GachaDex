@@ -20,5 +20,5 @@ val domainModule  = module {
     single{GetPokemonDetailsUseCase(get())}
     single{GetLastEncounterUseCase(get())}
     single{SetLastEncounterUseCase(get())}
-    single{ResetPokedexUseCase(get())}
+    single{ResetPokedexUseCase(get(), get())}
 }

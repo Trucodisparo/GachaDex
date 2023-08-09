@@ -56,8 +56,6 @@ class SettingsRepositoryImpl(private val context: Context): SettingsRepository {
 
     override suspend fun setLastEncounter(){
         context.dataStore.edit { settings ->
-            settings[current_dex] = DexConfig.KantoDex.region
-            settings[last_unlocked] = DexConfig.KantoDex.region
             settings[last_encounter] = System.currentTimeMillis()
         }
     }

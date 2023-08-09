@@ -57,7 +57,8 @@ class PokedexViewModel(
                         _settings.value = newSettings
                     }
                     getPokedexEntriesUseCase.invoke(region).collect{
-                        _pokedex.value = PokedexState(isLoaded = true, currentRegion = region, list = it)
+                        _pokedex.value = PokedexState(isLoaded = true, currentRegion = region,
+                            list = it.sortedBy { it.dexNumbers[region] })
                     }
                     if(region == settings.value.last_unlocked.region && isDexComplete()) unlockNextDex()
                 }
@@ -100,6 +101,7 @@ class PokedexViewModel(
                  ))
              }
          }
+         fetchSettings()
     }
 
     fun resetDex() {

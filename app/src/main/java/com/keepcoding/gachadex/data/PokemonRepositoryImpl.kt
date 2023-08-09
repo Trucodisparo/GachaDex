@@ -47,6 +47,7 @@ class PokemonRepositoryImpl(
 
     override suspend fun getRandomPokemon(region: String): Pair<PokedexEntryModel, Boolean>{
         val dexConfig = DexConfig.getDexByRegion(region)
+        println("1 - ${dexConfig.last+1}")
         val pokemonSpecies = remoteDataSource.getPokemonSpecies(Random.nextInt(1,dexConfig.last+1))
         val variant = getValidVariant(pokemonSpecies)
         val pokemon = remoteDataSource.getPokemon(variant)

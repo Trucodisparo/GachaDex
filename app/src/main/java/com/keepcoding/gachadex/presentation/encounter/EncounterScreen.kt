@@ -70,7 +70,7 @@ fun EncounterScreen(
         state.value.pokemon?.let{pokemon ->
             LaunchedEffect(Unit){
                 val mp = MediaPlayer()
-                mp.setDataSource("https://play.pokemonshowdown.com/audio/cries/${pokemon.species.lowercase()}.mp3")
+                mp.setDataSource("https://play.pokemonshowdown.com/audio/cries/${pokemon.species.lowercase().replace("\'", "")}.mp3")
                 mp.prepare()
                 mp.setOnCompletionListener {
                     buttonActive.value = true
