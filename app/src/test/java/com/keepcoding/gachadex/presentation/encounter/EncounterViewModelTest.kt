@@ -5,7 +5,7 @@ import app.cash.turbine.test
 import com.keepcoding.gachadex.common.DexConfig
 import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import com.keepcoding.gachadex.domain.model.PokedexStatusModel
-import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
+import com.keepcoding.gachadex.domain.usecase.GetPokedexStatusUseCase
 import com.keepcoding.gachadex.domain.usecase.GetRandomEncounterUseCase
 import com.keepcoding.gachadex.domain.usecase.RegisterPokemonUseCase
 import io.mockk.MockKAnnotations
@@ -31,7 +31,7 @@ internal class EncounterViewModelTest{
     @MockK(relaxed = true)
     private lateinit var registerPokemonUseCase: RegisterPokemonUseCase
     @MockK(relaxed = true)
-    private lateinit var getCurrentSettingsUseCase: GetCurrentSettingsUseCase
+    private lateinit var getPokedexStatusUseCase: GetPokedexStatusUseCase
 
     @Before
     fun setup(){
@@ -48,7 +48,7 @@ internal class EncounterViewModelTest{
                         Pair(pokemon, false)
                     )
                 }
-        coEvery{ getCurrentSettingsUseCase.invoke() } returns
+        coEvery{ getPokedexStatusUseCase.invoke() } returns
                 flow{
                     emit(
                         PokedexStatusModel(
@@ -58,7 +58,7 @@ internal class EncounterViewModelTest{
                     )
                 }
 
-        val vm = EncounterViewModel(getRandomEncounterUseCase, registerPokemonUseCase, getCurrentSettingsUseCase)
+        val vm = EncounterViewModel(getRandomEncounterUseCase, registerPokemonUseCase, getPokedexStatusUseCase)
         vm.encounter.test{
             vm.getRandomEncounter()
             assertEquals(EncounterState(), awaitItem())
@@ -75,7 +75,7 @@ internal class EncounterViewModelTest{
                         Pair(pokemon, false)
                     )
                 }
-        coEvery{ getCurrentSettingsUseCase.invoke() } returns
+        coEvery{ getPokedexStatusUseCase.invoke() } returns
                 flow{
                     emit(
                         PokedexStatusModel(
@@ -85,7 +85,7 @@ internal class EncounterViewModelTest{
                     )
                 }
 
-        val vm = EncounterViewModel(getRandomEncounterUseCase, registerPokemonUseCase, getCurrentSettingsUseCase)
+        val vm = EncounterViewModel(getRandomEncounterUseCase, registerPokemonUseCase, getPokedexStatusUseCase)
         vm.encounter.test{
             vm.getRandomEncounter()
             assertEquals(EncounterState(), awaitItem())

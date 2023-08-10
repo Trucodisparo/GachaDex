@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keepcoding.gachadex.common.DexConfig
 import com.keepcoding.gachadex.domain.model.PokedexStatusModel
-import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
-import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
+import com.keepcoding.gachadex.domain.usecase.GetPokedexStatusUseCase
 import com.keepcoding.gachadex.domain.usecase.GetRandomEncounterUseCase
 import com.keepcoding.gachadex.domain.usecase.RegisterPokemonUseCase
-import com.keepcoding.gachadex.presentation.pokedex.PokedexState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +18,7 @@ import kotlinx.coroutines.withContext
 class EncounterViewModel(
     private val getRandomEncounterUseCase: GetRandomEncounterUseCase,
     private val registerPokemonUseCase: RegisterPokemonUseCase,
-    private val getCurrentSettingsUseCase: GetCurrentSettingsUseCase
+    private val getPokedexStatusUseCase: GetPokedexStatusUseCase
 ): ViewModel() {
     private var _encounter = MutableStateFlow(EncounterState())
     val encounter: StateFlow<EncounterState> get() = _encounter
@@ -58,7 +56,7 @@ class EncounterViewModel(
     private fun fetchSettings(){
         viewModelScope.launch{
             withContext(Dispatchers.IO) {
-                getCurrentSettingsUseCase.invoke().collectLatest{
+                getPokedexStatusUseCase.invoke().collectLatest{
                     _settings.value = it
                     return@collectLatest
                 }

@@ -5,10 +5,10 @@ import app.cash.turbine.test
 import com.keepcoding.gachadex.common.DexConfig
 import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import com.keepcoding.gachadex.domain.model.PokedexStatusModel
-import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
+import com.keepcoding.gachadex.domain.usecase.GetPokedexStatusUseCase
 import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
 import com.keepcoding.gachadex.domain.usecase.ResetPokedexUseCase
-import com.keepcoding.gachadex.domain.usecase.SetCurrentSettingsUseCase
+import com.keepcoding.gachadex.domain.usecase.SetPokedexStatusUseCase
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -30,9 +30,9 @@ internal class PokedexViewModelTest{
     @MockK(relaxed = true)
     private lateinit var getPokedexEntriesUseCase: GetPokedexEntriesUseCase
     @MockK(relaxed = true)
-    private lateinit var getCurrentSettingsUseCase: GetCurrentSettingsUseCase
+    private lateinit var getPokedexStatusUseCase: GetPokedexStatusUseCase
     @MockK(relaxed = true)
-    private lateinit var setCurrentSettingsUseCase: SetCurrentSettingsUseCase
+    private lateinit var setPokedexStatusUseCase: SetPokedexStatusUseCase
     @MockK(relaxed = true)
     private lateinit var resetPokedexUseCase: ResetPokedexUseCase
 
@@ -53,19 +53,19 @@ internal class PokedexViewModelTest{
             PokedexEntryModel(id = index)
         }
         val region = DexConfig.KantoDex.region
-        coEvery{ getCurrentSettingsUseCase.invoke() } returns flow{emit(settings)}
+        coEvery{ getPokedexStatusUseCase.invoke() } returns flow{emit(settings)}
         coEvery { getPokedexEntriesUseCase.invoke(region) } returns
                 flow{
                     emit(
                         list
                     )
                 }
-        coEvery { setCurrentSettingsUseCase.invoke(settings) } returns Unit
+        coEvery { setPokedexStatusUseCase.invoke(settings) } returns Unit
 
         val vm = PokedexViewModel(
             getPokedexEntriesUseCase,
-            getCurrentSettingsUseCase,
-            setCurrentSettingsUseCase,
+            getPokedexStatusUseCase,
+            setPokedexStatusUseCase,
             resetPokedexUseCase
         )
 
@@ -91,14 +91,14 @@ internal class PokedexViewModelTest{
         )
         val region = DexConfig.KantoDex.region
         val exception = Throwable("An exception was thrown")
-        coEvery{ getCurrentSettingsUseCase.invoke() } returns flow{emit(settings)}
+        coEvery{ getPokedexStatusUseCase.invoke() } returns flow{emit(settings)}
         coEvery { getPokedexEntriesUseCase.invoke(region) } throws exception
-        coEvery { setCurrentSettingsUseCase.invoke(settings) } returns Unit
+        coEvery { setPokedexStatusUseCase.invoke(settings) } returns Unit
 
         val vm = PokedexViewModel(
             getPokedexEntriesUseCase,
-            getCurrentSettingsUseCase,
-            setCurrentSettingsUseCase,
+            getPokedexStatusUseCase,
+            setPokedexStatusUseCase,
             resetPokedexUseCase
         )
 

@@ -9,5 +9,5 @@ import java.util.List;
 class GetRandomEncounterUseCase(
     private val repository: PokemonRepository
 ){
-    suspend fun invoke(region: String) = flow<Pair<PokedexEntryModel, Boolean>>{emit(repository.getRandomPokemon(region))}
+    suspend fun invoke(region: String = "national") = flow<Pair<PokedexEntryModel, Boolean>>{emit(repository.getRandomPokemon(region))}
 }

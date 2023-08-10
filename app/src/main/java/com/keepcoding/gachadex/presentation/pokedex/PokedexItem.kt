@@ -29,6 +29,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,7 +62,11 @@ fun PokedexItem(
     }
     Card(modifier = Modifier
         .fillMaxWidth()
-        .clickable { onClick(pokemon.id) },
+        .clickable { onClick(pokemon.id) }
+        .semantics(mergeDescendants = true){
+        }.clearAndSetSemantics {
+            contentDescription = pokemon.species
+        },
         shape = RoundedCornerShape(0.dp),
         colors = CardDefaults.cardColors(containerColor = colorResource(colorId))
     ) {

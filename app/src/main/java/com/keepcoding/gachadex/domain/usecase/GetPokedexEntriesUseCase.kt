@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.flow
 class GetPokedexEntriesUseCase(
     private val repository: PokemonRepository
 ) {
-    suspend fun invoke(region: String) = flow{emit(repository.getPokedexEntries(region))}
+    suspend fun invoke(region: String = "national") = flow{emit(repository.getPokedexEntries(region))}
 }

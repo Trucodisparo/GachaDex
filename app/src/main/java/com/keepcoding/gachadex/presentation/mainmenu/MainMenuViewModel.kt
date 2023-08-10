@@ -4,9 +4,7 @@ import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
 import com.keepcoding.gachadex.domain.usecase.GetLastEncounterUseCase
-import com.keepcoding.gachadex.domain.usecase.SetCurrentSettingsUseCase
 import com.keepcoding.gachadex.domain.usecase.SetLastEncounterUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
