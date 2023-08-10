@@ -100,7 +100,7 @@ fun PokedexScreen(
                     )
                 }
             }else {
-                LazyColumn(modifier = Modifier.semantics { contentDescription=regions[selectedRegion] }) {
+                LazyColumn(modifier = Modifier.background(Color.DarkGray).semantics { contentDescription=regions[selectedRegion] }) {
                     items(state.value.list.size) {
                         val pokemon = state.value.list[it]
                         PokedexItem(pokemon, regions[selectedRegion].lowercase(), onItemClick)

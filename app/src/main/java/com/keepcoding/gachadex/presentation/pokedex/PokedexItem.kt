@@ -62,6 +62,7 @@ fun PokedexItem(
     }
     Card(modifier = Modifier
         .fillMaxWidth()
+        .padding(top = 1.dp)
         .clickable { onClick(pokemon.id) }
         .semantics(mergeDescendants = true){
         }.clearAndSetSemantics {
