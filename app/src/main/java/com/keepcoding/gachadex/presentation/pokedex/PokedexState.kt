@@ -7,7 +7,7 @@ data class PokedexState(
     var isLoaded: Boolean = false,
     var list: List<PokedexEntryModel> = emptyList(),
     var currentRegion: String = "national",
-    var dexCompletion: String = "${list.size}/${DexConfig.getDexByRegion(currentRegion).size}",
+    var dexCompletion: String = "${list.groupBy{it.dexNumbers}.size}/${DexConfig.getDexByRegion(currentRegion).size}",
     var isError: Boolean = false,
     var errorMsg: String? = null
 )
