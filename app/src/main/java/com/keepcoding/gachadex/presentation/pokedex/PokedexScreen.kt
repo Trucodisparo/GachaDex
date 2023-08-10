@@ -1,5 +1,6 @@
 package com.keepcoding.gachadex.presentation.pokedex
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -47,9 +48,9 @@ fun PokedexScreen(
     var expanded = remember{mutableStateOf(false)}
 
     val regions = vm.getAvailableRegions()
-    var selectedRegion = regions.indexOf(state.value.currentRegion.replaceFirstChar { it.uppercase() })
     vm.getData()
-
+    Log.d("CURRENT_DEX", "currentDex: ${state.value.currentRegion.replaceFirstChar { it.uppercase() }}")
+    var selectedRegion = regions.indexOf(state.value.currentRegion.replaceFirstChar { it.uppercase() })
     if(state.value.isLoaded && !state.value.isError){
         Column(
             modifier = Modifier.fillMaxSize(),

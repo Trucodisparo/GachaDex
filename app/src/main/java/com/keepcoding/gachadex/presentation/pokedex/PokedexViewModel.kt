@@ -4,15 +4,11 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.domain.model.PokemonModel
-import com.keepcoding.gachadex.domain.model.SettingsModel
+import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
-import com.keepcoding.gachadex.domain.usecase.GetLastEncounterUseCase
 import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
-import com.keepcoding.gachadex.domain.usecase.RegisterPokemonUseCase
 import com.keepcoding.gachadex.domain.usecase.ResetPokedexUseCase
 import com.keepcoding.gachadex.domain.usecase.SetCurrentSettingsUseCase
-import com.keepcoding.gachadex.domain.usecase.SetLastEncounterUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -34,12 +30,12 @@ class PokedexViewModel(
     )
     val pokedex: StateFlow<PokedexState> get() = _pokedex
 
-    private var _settings = MutableStateFlow(SettingsModel(
+    private var _settings = MutableStateFlow(PokedexStatusModel(
         current_dex = DexConfig.NatDex,
         last_unlocked = DexConfig.KantoDex
     ))
 
-    private val settings: StateFlow<SettingsModel> get() = _settings
+    private val settings: StateFlow<PokedexStatusModel> get() = _settings
 
     init{
         fetchSettings()
@@ -50,7 +46,7 @@ class PokedexViewModel(
             try {
                 withContext(Dispatchers.IO) {
                     if(region != settings.value.current_dex.region) {
-                        val newSettings = SettingsModel(
+                        val newSettings = PokedexStatusModel(
                             DexConfig.getDexByRegion(region),
                             settings.value.last_unlocked
                         )
@@ -97,7 +93,7 @@ class PokedexViewModel(
         val last_unlock_index = DexConfig.regions.indexOf(settings.value.last_unlocked.region)
          viewModelScope.launch {
              withContext(Dispatchers.IO) {
-                 setCurrentSettingsUseCase.invoke(SettingsModel(
+                 setCurrentSettingsUseCase.invoke(PokedexStatusModel(
                      current_dex = settings.value.current_dex,
                      last_unlocked = DexConfig.getDexByRegion(DexConfig.regions[last_unlock_index+1])
                  ))

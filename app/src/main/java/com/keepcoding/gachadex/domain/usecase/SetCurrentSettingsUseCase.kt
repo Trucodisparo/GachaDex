@@ -1,10 +1,10 @@
 package com.keepcoding.gachadex.domain.usecase
 
 import com.keepcoding.gachadex.data.PokedexStatusRepository
-import com.keepcoding.gachadex.domain.model.SettingsModel
+import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 
 class SetCurrentSettingsUseCase(
     private val repository: PokedexStatusRepository
 ) {
-    suspend fun invoke(settings: SettingsModel) = repository.setSettings(settings)
+    suspend fun invoke(settings: PokedexStatusModel) = repository.setSettings(settings)
 }

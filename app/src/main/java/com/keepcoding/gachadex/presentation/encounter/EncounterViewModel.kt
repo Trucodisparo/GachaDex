@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.domain.model.SettingsModel
+import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
 import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
 import com.keepcoding.gachadex.domain.usecase.GetRandomEncounterUseCase
@@ -26,13 +26,13 @@ class EncounterViewModel(
     val encounter: StateFlow<EncounterState> get() = _encounter
 
     private var _settings = MutableStateFlow(
-        SettingsModel(
+        PokedexStatusModel(
         current_dex = DexConfig.NatDex,
         last_unlocked = DexConfig.KantoDex
     )
     )
 
-    private val settings: StateFlow<SettingsModel> get() = _settings
+    private val settings: StateFlow<PokedexStatusModel> get() = _settings
 
     init{
         fetchSettings()

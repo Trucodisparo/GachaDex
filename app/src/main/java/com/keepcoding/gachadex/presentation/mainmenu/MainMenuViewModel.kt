@@ -55,23 +55,23 @@ class MainMenuViewModel(
 
      fun startTimer(){
          if(countDown.value.isEnabled)
-         countDownTimer = object : CountDownTimer(timeElapsed.value, 1000) {
-             override fun onTick(time: Long) {
-                 _countDown.value = MenuButtonState(
-                     text = String.format(
-                         "%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(time),
-                         TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(
-                             TimeUnit.MILLISECONDS.toMinutes(time)
-                         )
-                     ),
-                     isEnabled = false
-                 )
-             }
+             countDownTimer = object : CountDownTimer(timeElapsed.value, 1000) {
+                 override fun onTick(time: Long) {
+                     _countDown.value = MenuButtonState(
+                         text = String.format(
+                             "%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(time),
+                             TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(
+                                 TimeUnit.MILLISECONDS.toMinutes(time)
+                             )
+                         ),
+                         isEnabled = false
+                     )
+                 }
 
-             override fun onFinish() {
-                 Log.d("COUNTDOWN", "Finished!")
-                 _countDown.value = MenuButtonState(isEnabled = true)
-             }
-         }.start()
+                 override fun onFinish() {
+                     Log.d("COUNTDOWN", "Finished!")
+                     _countDown.value = MenuButtonState(isEnabled = true)
+                 }
+             }.start()
     }
 }

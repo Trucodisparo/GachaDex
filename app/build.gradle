@@ -49,6 +49,9 @@ android {
     viewBinding{
         enabled = true
     }
+    testOptions{
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -118,6 +121,11 @@ dependencies {
     //Datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
+    //Testing
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'io.mockk:mockk:1.13.4'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
+    testImplementation 'app.cash.turbine:turbine:1.0.0'
 }
