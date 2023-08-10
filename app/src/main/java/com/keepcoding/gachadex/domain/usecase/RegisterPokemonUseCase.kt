@@ -6,6 +6,5 @@ import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 class RegisterPokemonUseCase(
     private val repository: PokemonRepository
 ) {
-
     suspend fun invoke(pokemon: PokedexEntryModel) = repository.registerPokemon(pokemon)
 }

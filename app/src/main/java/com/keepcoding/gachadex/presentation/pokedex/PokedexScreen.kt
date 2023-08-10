@@ -1,5 +1,6 @@
 package com.keepcoding.gachadex.presentation.pokedex
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,9 +50,9 @@ fun PokedexScreen(
     var expanded = remember{mutableStateOf(false)}
 
     val regions = vm.getAvailableRegions()
-    var selectedRegion = regions.indexOf(state.value.currentRegion.replaceFirstChar { it.uppercase() })
     vm.getData()
-
+    Log.d("CURRENT_DEX", "currentDex: ${state.value.currentRegion.replaceFirstChar { it.uppercase() }}")
+    var selectedRegion = regions.indexOf(state.value.currentRegion.replaceFirstChar { it.uppercase() })
     if(state.value.isLoaded && !state.value.isError){
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -97,7 +100,7 @@ fun PokedexScreen(
                     )
                 }
             }else {
-                LazyColumn() {
+                LazyColumn(modifier = Modifier.semantics { contentDescription=regions[selectedRegion] }) {
                     items(state.value.list.size) {
                         val pokemon = state.value.list[it]
                         PokedexItem(pokemon, regions[selectedRegion].lowercase(), onItemClick)

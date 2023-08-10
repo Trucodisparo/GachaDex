@@ -10,5 +10,4 @@ class RemoteDataSourceImpl(
     override suspend fun getPokemon(name: String): PokemonDTO = pokemonAPI.getPokemon(name)
     override suspend fun getPokemonSpecies(dexN: Int): PokemonSpeciesDTO = pokemonAPI.getPokemonSpecies(dexN)
     override suspend fun getPokemonSpecies(name: String): PokemonSpeciesDTO = pokemonAPI.getPokemonSpecies(name)
-    override suspend fun getPokemonSpeciesRegionalDex(region: String, dexN: Int) : PokemonSpeciesDTO = pokemonAPI.getPokemonSpeciesRegionalDex(region, dexN)
 }

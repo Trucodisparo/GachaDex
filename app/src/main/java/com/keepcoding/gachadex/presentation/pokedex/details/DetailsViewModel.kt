@@ -1,19 +1,12 @@
 package com.keepcoding.gachadex.presentation.pokedex.details
 
-import android.telecom.Call.Details
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.domain.model.SettingsModel
-import com.keepcoding.gachadex.domain.usecase.GetCurrentSettingsUseCase
-import com.keepcoding.gachadex.domain.usecase.GetPokedexEntriesUseCase
 import com.keepcoding.gachadex.domain.usecase.GetPokemonDetailsUseCase
-import com.keepcoding.gachadex.domain.usecase.SetCurrentSettingsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 

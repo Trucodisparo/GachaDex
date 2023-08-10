@@ -9,7 +9,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.domain.model.SettingsModel
+import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 import kotlinx.coroutines.flow.map
 
 const val DATASTORE = "settings"
@@ -32,13 +32,13 @@ class SettingsRepositoryImpl(private val context: Context): PokedexStatusReposit
 
     override suspend fun getCurrentSettings() = context.dataStore.data.map{settings ->
         Log.d("SETTINGS_CURRENT", settings[last_unlocked].toString())
-        SettingsModel(
+        PokedexStatusModel(
             current_dex = DexConfig.getDexByRegion(settings[current_dex] ?: "kanto"),
             last_unlocked = DexConfig.getDexByRegion(settings[last_unlocked] ?: "kanto"),
         )
     }
 
-    override suspend fun setSettings(newSettings: SettingsModel){
+    override suspend fun setSettings(newSettings: PokedexStatusModel){
         context.dataStore.edit{settings ->
             settings[current_dex] = newSettings.current_dex.region
             settings[last_unlocked] = newSettings.last_unlocked.region
