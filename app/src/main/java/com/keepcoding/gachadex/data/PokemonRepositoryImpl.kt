@@ -57,8 +57,6 @@ class PokemonRepositoryImpl(
     }
 
     override suspend fun registerPokemon(pokemon: PokedexEntryModel){
-        println(pokemon)
-        println(pokemon.toPokemonLocal())
         localDataSource.addEntry(pokemon.toPokemonLocal())
     }
 

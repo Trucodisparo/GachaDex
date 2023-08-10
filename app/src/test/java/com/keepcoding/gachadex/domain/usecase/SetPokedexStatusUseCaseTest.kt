@@ -30,7 +30,7 @@ internal class SetPokedexStatusUseCaseTest{
     @Test
     fun testInvocation() = runTest{
         val pokedexStatus = PokedexStatusModel()
-        coEvery { pokedexStatusRepository.setSettings(pokedexStatus) }
+        coEvery { pokedexStatusRepository.setSettings(pokedexStatus) } returns Unit
 
         val useCase = SetPokedexStatusUseCase(pokedexStatusRepository)
         useCase.invoke(pokedexStatus)

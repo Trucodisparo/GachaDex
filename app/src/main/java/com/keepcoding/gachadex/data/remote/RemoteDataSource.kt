@@ -10,5 +10,4 @@ interface RemoteDataSource {
 
     suspend fun getPokemonSpecies(dexN: Int): PokemonSpeciesDTO
     suspend fun getPokemonSpecies(name: String): PokemonSpeciesDTO
-    suspend fun getPokemonSpeciesRegionalDex(region: String, dexN: Int) : PokemonSpeciesDTO
 }
