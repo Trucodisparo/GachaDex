@@ -1,7 +1,6 @@
 package com.keepcoding.gachadex.domain.usecase
 
 import com.keepcoding.gachadex.data.PokemonRepository
-import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import kotlinx.coroutines.flow.flow
 
 

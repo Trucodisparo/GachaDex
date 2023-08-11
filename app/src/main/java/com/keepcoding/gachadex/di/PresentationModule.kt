@@ -5,7 +5,6 @@ import com.keepcoding.gachadex.presentation.mainmenu.MainMenuViewModel
 import com.keepcoding.gachadex.presentation.pokedex.PokedexViewModel
 import com.keepcoding.gachadex.presentation.pokedex.details.DetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
 val presentationModule = module{

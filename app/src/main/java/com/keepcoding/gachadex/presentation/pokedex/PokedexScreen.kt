@@ -8,18 +8,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Colors
+import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Text
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -34,11 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.keepcoding.gachadex.R
-import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import com.keepcoding.gachadex.ui.theme.TextColor
 import org.koin.androidx.compose.koinViewModel
-import org.koin.core.component.getScopeId
 
 @Composable
 fun PokedexScreen(
@@ -127,5 +119,5 @@ fun PokedexScreen(
 @Preview
 @Composable
 fun PokedexScreenPreview(){
-    PokedexScreen(){}
+    PokedexScreen {}
 }

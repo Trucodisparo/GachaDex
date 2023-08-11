@@ -1,16 +1,12 @@
 package com.keepcoding.gachadex.domain.usecase
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.data.PokedexStatusRepository
 import com.keepcoding.gachadex.data.PokemonRepository
 import com.keepcoding.gachadex.domain.model.PokedexEntryModel
-import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before

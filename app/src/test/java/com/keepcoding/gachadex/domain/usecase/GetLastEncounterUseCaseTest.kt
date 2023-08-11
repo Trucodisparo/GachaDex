@@ -1,9 +1,7 @@
 package com.keepcoding.gachadex.domain.usecase
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.keepcoding.gachadex.common.DexConfig
 import com.keepcoding.gachadex.data.PokedexStatusRepository
-import com.keepcoding.gachadex.domain.model.PokedexStatusModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

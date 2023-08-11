@@ -123,7 +123,7 @@ fun DetailsScreen(
 
 @Composable
 fun MovesList(list: List<String>){
-    Column() {
+    Column {
         list.forEach {
             Text(it,
                 modifier = Modifier.fillMaxWidth(),

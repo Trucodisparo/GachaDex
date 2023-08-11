@@ -2,10 +2,7 @@ package com.keepcoding.gachadex.data.remote
 
 import com.keepcoding.gachadex.data.dto.PokemonDTO
 import com.keepcoding.gachadex.data.dto.PokemonSpeciesDTO
-import com.keepcoding.gachadex.data.dto.SearchDto
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface PokemonAPI {

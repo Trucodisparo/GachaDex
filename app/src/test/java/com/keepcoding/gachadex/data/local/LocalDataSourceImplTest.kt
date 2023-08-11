@@ -2,7 +2,6 @@ package com.keepcoding.gachadex.data.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.keepcoding.gachadex.data.local.model.PokemonDAO
-import com.keepcoding.gachadex.data.remote.RemoteDataSource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

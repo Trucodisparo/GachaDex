@@ -1,19 +1,15 @@
 package com.keepcoding.gachadex.presentation.mainmenu
 
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.widget.TextClock
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -29,21 +25,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.keepcoding.gachadex.R
-import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import com.keepcoding.gachadex.navigation.NavigationGraph
 import com.keepcoding.gachadex.presentation.pokedex.PokedexViewModel
 import com.keepcoding.gachadex.ui.theme.GachaDexTheme
 import org.koin.androidx.compose.koinViewModel
-import java.util.concurrent.TimeUnit
-import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities.Local
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

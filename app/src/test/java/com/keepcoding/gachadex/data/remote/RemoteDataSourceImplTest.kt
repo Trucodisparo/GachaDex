@@ -7,8 +7,6 @@ import com.keepcoding.gachadex.data.dto.common.NameDTO
 import com.keepcoding.gachadex.data.dto.pokemon.ArtworkDTO
 import com.keepcoding.gachadex.data.dto.pokemon.OfficialArtworkDTO
 import com.keepcoding.gachadex.data.dto.pokemon.PictureDTO
-import com.keepcoding.gachadex.data.local.LocalDataSource
-import com.keepcoding.gachadex.data.local.PokemonLocal
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

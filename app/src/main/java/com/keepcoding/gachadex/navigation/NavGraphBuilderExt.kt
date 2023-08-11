@@ -31,7 +31,7 @@ fun NavGraphBuilder.addPokedex(navController: NavController){
 
 fun NavGraphBuilder.addEncounter(navController: NavController){
     composable(route = Screen.EncounterScreen.route){
-        EncounterScreen(){ navController.popBackStack()}
+        EncounterScreen { navController.popBackStack()}
     }
 }
 

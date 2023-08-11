@@ -1,9 +1,7 @@
 package com.keepcoding.gachadex.data.mappers
 
-import androidx.room.ColumnInfo
 import com.keepcoding.gachadex.data.local.PokemonLocal
 import com.keepcoding.gachadex.domain.model.PokedexEntryModel
-import com.keepcoding.gachadex.domain.model.PokemonModel
 
 fun PokemonLocal.toPokedexEntryModel() = PokedexEntryModel(
     id = id,

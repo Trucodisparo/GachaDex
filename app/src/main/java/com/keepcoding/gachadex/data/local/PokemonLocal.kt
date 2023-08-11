@@ -3,7 +3,6 @@ package com.keepcoding.gachadex.data.local
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.keepcoding.gachadex.common.DexConfig
 
 @Entity(tableName = "PokemonTable")
 data class PokemonLocal (

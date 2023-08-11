@@ -1,19 +1,14 @@
 package com.keepcoding.gachadex.data
 
-import android.content.Context
 import android.content.res.Resources.NotFoundException
 import android.util.Log
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import com.keepcoding.gachadex.common.DexConfig
-import com.keepcoding.gachadex.data.local.LocalDataSource
-import com.keepcoding.gachadex.data.remote.RemoteDataSource
 import com.keepcoding.gachadex.data.dto.PokemonDTO
 import com.keepcoding.gachadex.data.dto.PokemonSpeciesDTO
-import com.keepcoding.gachadex.data.local.PokemonLocal
+import com.keepcoding.gachadex.data.local.LocalDataSource
 import com.keepcoding.gachadex.data.mappers.toPokedexEntryModel
 import com.keepcoding.gachadex.data.mappers.toPokemonLocal
+import com.keepcoding.gachadex.data.remote.RemoteDataSource
 import com.keepcoding.gachadex.domain.model.PokedexEntryModel
 import com.keepcoding.gachadex.domain.model.PokemonModel
 import kotlin.random.Random
@@ -111,7 +106,9 @@ class PokemonRepositoryImpl(
         while(variantIndexes.size > 0){
             val variant = pokemon.varieties[variantIndexes.first()].pokemon.name
             Log.d("RANDOM_ENCOUNTER_GEN", "variant: $variant")
-            if(!(variant.endsWith("-mega") || variant.endsWith("-mega-x") || variant.endsWith("-mega-y")|| variant.endsWith("-gmax") || variant.endsWith("-totem")))
+            if(!(variant.endsWith("-mega") || variant.endsWith("-mega-x") ||
+                        variant.endsWith("-mega-y")|| variant.endsWith("-gmax") ||
+                        variant.endsWith("-totem") || variant.contains("pikachu-")))
                 return variant
             else
                 variantIndexes.remove(variantIndexes.first())
